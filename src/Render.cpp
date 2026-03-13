@@ -1,17 +1,12 @@
-#include <Render.hpp>
+#include "Render.hpp"
+#include "Board.hpp"
+#include <iostream>
 
-Render::Render() {
-    initializeBoard();
-}
-
-Render::~Render() {
-
-}
-
-void Render::initializeBoard() {
-    mBoard = kInitialBoardState;
+Render::Render(const Board& board) : mBoard(board.getBoard()) {
     printBoard();
 }
+
+Render::~Render() { }
 
 void Render::printBoard() {
     int sqrCount = 0;
@@ -23,10 +18,6 @@ void Render::printBoard() {
     }
     std::cout << '\n' << "  A B C D E F G H \n";
 
-}
-
-void Render::assignBoard(BoardArray& dst, const BoardArray& src) {
-    dst = src;
 }
 
 const char* Render::toGlyph(const char c, bool sqr) {

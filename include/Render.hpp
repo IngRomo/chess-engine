@@ -1,26 +1,16 @@
-#include <iostream>
-#include <array>
-#include <vector>
+#pragma once
 
-using BoardArray = std::array<char, 64>;
+#include <array>
+
+class Board;
 
 class Render {
 private:
-    BoardArray mBoard{};
-    const  BoardArray kInitialBoardState   {'r','n','b','q','k','b','n','r',
-                                            'p','p','p','p','p','p','p','p',
-                                            '.','.','.','.','.','.','.','.',
-                                            '.','.','.','.','.','.','.','.',
-                                            '.','.','.','.','.','.','.','.',
-                                            '.','.','.','.','.','.','.','.',
-                                            'P','P','P','P','P','P','P','P',
-                                            'R','N','B','Q','K','B','N','R'};
-    
-    void initializeBoard();
-    void assignBoard(BoardArray&, const BoardArray&);
-    const char *toGlyph(const char c, bool sqr);
+    std::array<char,64> mBoard;
+
     void printBoard();
+    const char* toGlyph(const char c, bool sqr);
 public:
-    Render();
+    Render(const Board& board);
     ~Render();
 };
