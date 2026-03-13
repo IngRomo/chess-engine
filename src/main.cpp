@@ -1,10 +1,12 @@
 #include <iostream>
 
+#include "Game.hpp"
 #include "Render.hpp"
-#include "Board.hpp"
 
 int main(int argc, char* argv[]) {
 
-    Board board;
-    Render renderer(board);
+    Game mGame;
+    Render::printBoard(mGame.getBoardArray());
+    mGame.makeMove(52,36);
+    Render::printBoard(mGame.getBoardArray());
 }

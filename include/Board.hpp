@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <cstdint>
 
 class Board {
 private:
@@ -8,19 +9,18 @@ private:
 
     BoardArray mBoard;
     static inline const BoardArray kInitialBoardState{'r','n','b','q','k','b','n','r',
-                                                    'p','p','p','p','p','p','p','p',
-                                                    '.','.','.','.','.','.','.','.',
-                                                    '.','.','.','.','.','.','.','.',
-                                                    '.','.','.','.','.','.','.','.',
-                                                    '.','.','.','.','.','.','.','.',
-                                                    'P','P','P','P','P','P','P','P',
-                                                    'R','N','B','Q','K','B','N','R'};
+                                                      'p','p','p','p','p','p','p','p',
+                                                      '.','.','.','.','.','.','.','.',
+                                                      '.','.','.','.','.','.','.','.',
+                                                      '.','.','.','.','.','.','.','.',
+                                                      '.','.','.','.','.','.','.','.',
+                                                      'P','P','P','P','P','P','P','P',
+                                                      'R','N','B','Q','K','B','N','R'};
 
-    void assignBoard(BoardArray&, const BoardArray&);
 public:
     Board();
     ~Board();
 
-    void setBoard();
+    void applyMove(int8_t from,int8_t to);
     const BoardArray& getBoard() const;
 };

@@ -1,19 +1,15 @@
 #include "Board.hpp"
 
-Board::Board() {
-    mBoard = kInitialBoardState;
+Board::Board() : mBoard(kInitialBoardState) {
 }
 
-Board::~Board() = default;
-
-void Board::assignBoard(BoardArray& dst, const BoardArray& src) {
-    dst = src;
-}
-
-void Board::setBoard() {
-    assignBoard(mBoard, kInitialBoardState);
-}
+Board::~Board() { }
 
 const Board::BoardArray& Board::getBoard() const {
     return mBoard;
+}
+
+void Board::applyMove(int8_t from, int8_t to){
+    mBoard[to] = mBoard[from];
+    mBoard[from] = '.';
 }

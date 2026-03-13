@@ -1,19 +1,19 @@
 #include "Render.hpp"
 #include "Board.hpp"
+
 #include <iostream>
 
-Render::Render(const Board& board) : mBoard(board.getBoard()) {
-    printBoard();
+Render::Render() {
 }
 
 Render::~Render() { }
 
-void Render::printBoard() {
+void Render::printBoard(const std::array<char,64>& board) {
     int sqrCount = 0;
-    for (size_t i = 0; i < mBoard.size(); ++i) {
+    for (size_t i = 0; i < board.size(); ++i) {
         if (!(i % 8)) { std::cout << '\n' << 8-((i/8)) << ' '; ++sqrCount;}
         bool squareColor = sqrCount % 2;
-        std::cout << toGlyph(mBoard[i], squareColor) << ' ';
+        std::cout << Render::toGlyph(board[i], squareColor) << ' ';
         sqrCount++;
     }
     std::cout << '\n' << "  A B C D E F G H \n";
